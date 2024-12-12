@@ -83,9 +83,17 @@ class Program
         // Định nghĩa các màu cho từng chức năng
         ConsoleColor[] colors = { ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Blue, ConsoleColor.Red };
 
-        // In dòng trên cùng của menu
+         // In dòng trên cùng của menu
         Console.SetCursorPosition(xStart, yStart);
-        Console.WriteLine("┏━━━━━━━━━━━━━━━━━┓   ┏━━━━━━━━━━━━━━━━━┓   ┏━━━━━━━━━━━━━━━━━┓   ┏━━━━━━━━━━━━━━━━━┓");
+        Console.ForegroundColor = colors[0];
+        Console.Write("┏━━━━━━━━━━━━━━━━━┓   ");
+        Console.ForegroundColor = colors[1];
+        Console.Write("┏━━━━━━━━━━━━━━━━━┓   ");
+        Console.ForegroundColor = colors[2];
+        Console.Write("┏━━━━━━━━━━━━━━━━━┓   ");
+        Console.ForegroundColor = colors[3];
+        Console.WriteLine("┏━━━━━━━━━━━━━━━━━┓   ");
+        Console.ResetColor();
 
         // In dòng giữa với từng màu cho chức năng
         Console.SetCursorPosition(xStart, yStart + 1);
@@ -101,7 +109,15 @@ class Program
 
         // In dòng dưới cùng của menu
         Console.SetCursorPosition(xStart, yStart + 2);
-        Console.WriteLine("┗━━━━━━━━━━━━━━━━━┛   ┗━━━━━━━━━━━━━━━━━┛   ┗━━━━━━━━━━━━━━━━━┛   ┗━━━━━━━━━━━━━━━━━┛");
+        Console.ForegroundColor = colors[0];
+        Console.Write("┗━━━━━━━━━━━━━━━━━┛   ");
+        Console.ForegroundColor = colors[1];
+        Console.Write("┗━━━━━━━━━━━━━━━━━┛   ");
+        Console.ForegroundColor = colors[2];
+        Console.Write("┗━━━━━━━━━━━━━━━━━┛   ");
+        Console.ForegroundColor = colors[3];
+        Console.WriteLine("┗━━━━━━━━━━━━━━━━━┛   ");
+        Console.ResetColor();
 
         // In lời nhắc nhập lựa chọn bên dưới menu
         string prompt = "Mời bấm phím để lựa chọn: ";
@@ -178,6 +194,20 @@ class Program
                 break;
             }
         }
+    }
+  static void HuongDanChoi()
+    {
+        Console.Clear();
+        Console.WriteLine("\t\tHƯỚNG DẪN");
+        Console.WriteLine("Khi bạn bấm vào chơi thì máy sẽ ngẫu nhiên đưa ra 1 câu hỏi trong bộ câu hỏi có sẵn. ");
+        Console.WriteLine("Sau đó bạn sẽ suy nghĩ và chọn đáp án đúng.");
+        Console.WriteLine("Do đây là mô hình phân loại 7 nên sẽ quy ước: \r\n1. Chất lỏng\r\n2. Thực phẩm thừa\r\n3. Kim loại\r\n4. Nhựa tái chế\r\n5. Giấy\r\n6. Hộp sữa \r\n7. Rác thải còn lại. \r\n");
+        Console.WriteLine("1 round sẽ gồm 5 phút để chơi: trả lời đúng 1 câu sẽ được 1 điểm");
+        Console.WriteLine("NHỚ TẮT BỘ GÕ TIẾNG VIỆT TRƯỚC KHI CHƠI");
+        Console.WriteLine("\nNhấn ESC để thoát hướng dẫn");
+
+        while (Console.ReadKey().Key != ConsoleKey.Escape) ;
+
     }
 
     static void XuLyChoi()
@@ -403,6 +433,5 @@ class Program
                     break;
             }
         }
-
     }
 }
