@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -172,12 +173,27 @@ class Program
     static void NhapThongTin()
     {
         Console.Clear();
-        Console.Write("Nhập tên người chơi: ");
-        nguoichoi = Console.ReadLine();
-
-        if (!playerScores.ContainsKey(nguoichoi))
+        string nguoichoi = "";
+        while (true)
         {
-            playerScores[nguoichoi] = new List<int>();
+            try
+            {
+                Console.Write("Nhập tên người chơi: ");
+                nguoichoi = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(nguoichoi))
+                {
+                    throw new Exception("Tên người chơi không thể rỗng");
+                }
+                if (nguoichoi.All(char.IsDigit))
+                {
+                    throw new Exception("Tên người chơi không thể là số");
+                }    
+                break;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         Console.WriteLine($"Chào mừng {nguoichoi} đến với game!");
@@ -305,6 +321,7 @@ class Program
                 Console.WriteLine("{0}", cauhoi[index, 2]);
                 Console.WriteLine("{0}", cauhoi[index, 3]);
                 Console.WriteLine("{0}", cauhoi[index, 4]);
+                Console.WriteLine($"╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
 
                 string chon5050 = " ";
                 while (true)
@@ -324,7 +341,7 @@ class Program
                         Console.WriteLine(loi.Message);
                     }
                 }
-
+                // Kiểm tra quyền 50/50 chưa được sử dụng
                 if (chon5050 == "Y" && !daSuDung5050)
                 {
                     daSuDung5050 = true;
@@ -341,7 +358,7 @@ class Program
                 }
                 else 
                 {
-                    Console.WriteLine("Bạn đã sử dụng quyền trợ giúp 50/50 trước đó.");
+                    Console.WriteLine("Bạn đã sử dụng quyền trợ giúp 50/50 cho vòng này rồi.");
                 }
 
                 Console.Write("\nNhập câu trả lời của bạn (A/B/C/D): ");
