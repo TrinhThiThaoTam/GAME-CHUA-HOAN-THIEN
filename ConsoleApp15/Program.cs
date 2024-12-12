@@ -266,7 +266,6 @@ class Program
     };
 
         string[] dapAnDung = { "A", "C", "B", "D", "B", "C", "A", "C", "B", "B", "D", "B", "C", "C", "C", "A", "A", "B", "B", "B", "B", "C", "D", "B", "B", "B", "A", "C", "D", "B" }; // Đáp án đúng
-        bool daSuDung5050 = false; // Đánh dấu quyền trợ giúp 50/50
         int soCauHoi = cauhoi.GetLength(0); // Lưu số lượng câu hỏi vào biến
         int soVong = 3; // 3 vòng chơi
         int soCauHoiMoiVong = 5; // 5 câu hỏi mỗi vòng
@@ -274,6 +273,7 @@ class Program
         // Quá trình chơi
         for (int vong = 1; vong <= soVong; vong++)
         {
+            bool daSuDung5050 = false;
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"\n---------------- Vòng {vong} ----------------");
             List<string> cauHoiCuaVong = new List<string>();
